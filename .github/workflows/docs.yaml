@@ -1,0 +1,15 @@
+name: docs
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Build docs
+        uses: TinyTapeout/tt-gds-action/docs@tt04
