@@ -11,7 +11,6 @@ project:
 #  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
-# Before changing this, please reach out to us on discord to discuss your design.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
 
 # Keep a track of the submission yaml
