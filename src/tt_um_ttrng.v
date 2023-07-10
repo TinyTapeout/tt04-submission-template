@@ -20,7 +20,7 @@ module tt_um_ttrng(
 	input  wire       rst_n
 );
 
-always @(posedge clk or negedge rst_n)
+always @(posedge clk)        
     uio_out <= 8'b0000001;
 
 endmodule
