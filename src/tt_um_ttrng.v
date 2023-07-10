@@ -1,6 +1,6 @@
 module tt_um_ttrng(
     input wire sel1,
-    input wire sel2
+    input wire sel2,
     output reg[8] out
 );
 
