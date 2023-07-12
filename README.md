@@ -2,7 +2,7 @@
 
 # SR-latch based TRNG
 
-Based on a 2016 paper (tbd)
+Based on the 2016 paper "ASIC implementation of random number generators using SR latches and its evaluation"
 
 # What is Tiny Tapeout?
 
