@@ -9,6 +9,9 @@
 
 `default_nettype none
 
+// TODO: Implement ENA so my design is quiet when not in use. Because I rely on free running
+// oscillators, we should be a good citizen and not take up power budget when not enabled.
+
 module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
    	input  wire [7:0] ui_in,	// Dedicated inputs
 	output wire [7:0] uo_out,	// Dedicated outputs
@@ -19,8 +22,11 @@ module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
 	input  wire       clk,      // clock
 	input  wire       rst_n     // reset_n - low to reset
 );
+	reg [7:0] bytes_out;
+	assign uo_out = bytes_out;
 
-always @(posedge clk)        
-    uio_out <= 8'b0000001;
+	always @(posedge clk) begin   
+		bytes_out <= 8'b0000001;
+	end
 
 endmodule
