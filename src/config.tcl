@@ -48,7 +48,7 @@ set ::env(DECAP_CELL) "\
     sky130_ef_sc_hd__decap_12"
 
 # clock
-set ::env(CLOCK_TREE_SYNTH) 1
+set ::env(RUN_CTS) 1
 # period is in ns, so 20ns == 50mHz
 set ::env(CLOCK_PERIOD) "20"
 set ::env(CLOCK_PORT) {clk}
