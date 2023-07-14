@@ -1,8 +1,8 @@
-name: test
+name: cocotb
 # either manually started, or on a schedule
 on: [ push, workflow_dispatch ]
 jobs:
-  test:
+  cocotb:
     # ubuntu
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,7 @@ jobs:
         cocotb-config --libpython
         cocotb-config --python-bin
 
-    - name: test
+    - name: cocotb
       run: |
         cd src
         make clean
