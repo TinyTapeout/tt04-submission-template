@@ -33,9 +33,6 @@ set ::env(FP_SIZING) absolute
 set ::env(PL_BASIC_PLACEMENT) {0}
 set ::env(GRT_ALLOW_CONGESTION) "1"
 
-# otherwise fails on small designs at global placement
-set ::env(GRT_CELL_PADDING) "4"
-
 set ::env(FP_IO_HLENGTH) 2
 set ::env(FP_IO_VLENGTH) 2
 
