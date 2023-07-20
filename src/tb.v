@@ -33,9 +33,23 @@ module tb (
     wire [7:0] number = uo_out[7:0];
     wire [1:0] selector = 2'b01;
 
+    reg [1:0] sel0 = 2'b01;
+
     ttrng ttrng (
-        .selector (selector),
+        .selector (sel0),
         .number (number)
     );
+
+  initial begin
+    sel0 = 2'b01;
+    #20;
+    sel0 = 2'b01;
+    #20;
+    sel0 = 2'b01;
+    #20;
+    sel0 = 2'b01;
+    #20;
+    $display("Test complete");
+  end
 
 endmodule
