@@ -32,4 +32,5 @@ After that, the action uses the open source ASIC tool called [OpenLane](https://
 
 ## What next?
 
+- Submit your design to the next shuttle [on the website](https://tinytapeout.com/#submit-your-design), the closing date is 8th September.
 - Share your GDS on Twitter, tag it [#tinytapeout](https://twitter.com/hashtag/tinytapeout?src=hashtag_click) and [link me](https://twitter.com/matthewvenn)!
