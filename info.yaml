@@ -71,4 +71,4 @@ documentation:
   discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     0       # Clock frequency in Hz (if required)
-  picture:      ""      # relative path to a picture in your repository
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
