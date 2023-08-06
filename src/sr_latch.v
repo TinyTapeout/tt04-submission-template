@@ -1,10 +1,18 @@
-module sr_latch(input S, input R, output Q, output Qn);
+`timescale 1ns/1ns
+// Q and Qn are circular so verilator can't optimize.
+/* verilator lint_off UNOPTFLAT */
+module sr_latch(s, r, q, qn);
+    input s; // initial state 0
+    input r; // initial state 1
+    output reg q, qn;
 
-wire Q_int, Qn_int;
+always @(*) begin
+  if (1) begin
+     q <= ~(r | qn); 
+     qn <= ~(s | q); 
+  end
+end
 
-assign #1 Q_int = ~(S & Qn_int);
-assign #1 Qn_int = ~(R & Q_int);
-assign Q = Q_int;
-assign Qn = Qn_int;
-
+    //assign q = ~(r | qn);
+    //assign qn = ~(s | q);
 endmodule

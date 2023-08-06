@@ -3,6 +3,7 @@
 .vscode
 *.vcd
 *.vvp
+a.out
 runs
 src/sim_build
 src/__pycache__/

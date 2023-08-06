@@ -7,11 +7,11 @@ expected = [1]
 
 @cocotb.test()
 async def test_ttrng(dut):
-    dut._log.info("start")
+    dut._log.info("starting test_ttrng!")
     clock = Clock(dut.clk, 10, units="us")
     cocotb.start_soon(clock.start())
 
-    dut._log.info("reset")
+    dut._log.info("reset!")
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1

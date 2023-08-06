@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 /*
  * tt_um_ttrng.v
  *
@@ -5,9 +6,6 @@
  *
  * Author: Steve Jenson
  */
-
-
-`default_nettype none
 
 // TODO: Implement ENA so my design is quiet when not in use. Because I rely on free running
 // oscillators, we should be a good citizen and not take up power budget when not enabled.
@@ -23,12 +21,33 @@ module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
   input  wire       rst_n     // reset_n - low to reset
 );
   reg [7:0] bytes_out;
-  assign uo_out = bytes_out;
   assign uio_out = bytes_out; // TODO: this line exists to satisfy the linter
   assign uio_oe = bytes_out; // TODO: this line exists to satisfy the linter
 
+  reg reset;
+  always @(posedge clk) reset = ~rst_n;
+  
+  ttrng ttrng (
+      .clk (clk),
+      .rst_n (rst_n),
+      .number (uo_out[7:0]),
+      .enabled (ena)
+  );
+  
+  initial begin
+    //bytes_out = 8'b0000_0000;
+    reset = 0;
+  end
+
   always @(posedge clk) begin
-    bytes_out <= 8'b0000_0001;
+    $display("top: posedge clk");
+    if (reset) begin
+      $display("top in reset");
+      bytes_out <= 8'b0000_0000;    
+    end else begin
+      $display("top not in reset");
+      bytes_out <= uo_out[7:0];
+    end
   end
 
 endmodule
