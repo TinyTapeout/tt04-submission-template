@@ -6,7 +6,9 @@ module tb();
 reg clk;
 reg rst_n;
 reg ena;
+/* verilator lint_off UNDRIVEN */
 reg [7:0] ui_in;
+/* verilator lint_off UNUSEDSIGNAL */
 reg [7:0] uio_in;
 wire [7:0] uo_out;
 wire [7:0] uio_out;

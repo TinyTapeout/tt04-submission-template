@@ -10,7 +10,7 @@ module d_flip_flop(d, clk, q, rst_n);
   end
 
   always @(posedge clk) begin
-    reset = ~rst_n;
+    reset <= ~rst_n;
         if (reset) begin
             q <= 1'b0;
         end else begin

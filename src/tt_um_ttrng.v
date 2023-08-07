@@ -11,9 +11,12 @@
 // TODO: Implement ENA so my design is quiet when not in use. Because I rely on free running
 // oscillators, we should be a good citizen and not take up power budget when not enabled.
 
-module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
+module tt_um_ttrng (
+  /* verilator lint_off UNUSEDSIGNAL */
   input  wire [7:0] ui_in, // Dedicated inputs
+  /* verilator lint_off UNUSEDSIGNAL */
   output wire [7:0] uo_out, // Dedicated outputs
+  /* verilator lint_off UNUSEDSIGNAL */
   input  wire [7:0] uio_in, // IOs: Input path
   output wire [7:0] uio_out, // IOs: Output path
   output wire [7:0] uio_oe, // IOs: Enable path (active high: 0=input, 1=output)
@@ -26,7 +29,7 @@ module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
   assign uio_oe = bytes_out; // TODO: this line exists to satisfy the linter
 
   reg reset;
-  always @(posedge clk) reset = ~rst_n;
+  always @(posedge clk) reset <= ~rst_n;
   
   assign uio_out = 8'b0;
   assign uio_oe  = 8'b0;

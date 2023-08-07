@@ -6,6 +6,7 @@ input wire enabled;
 output reg b; // our output bit.
 
 wire [7:0] qs = 8'b0000_0000;
+/* verilator lint_off UNUSEDSIGNAL */
 wire [7:0] dummy_qns = 8'b0000_0000; // TODO: these wires are unused, can we elide?
 reg xord_qs = 0;
 wire final_output = 0;
@@ -45,13 +46,13 @@ always @(posedge clk) begin
         r <= clk;
     end
 
-    reset = ~rst_n;
+    reset <= ~rst_n;
     if (reset) begin
-        b = 0;
+        b <= 0;
     end else begin
         // reduce qs to a single bit with xor.
-        xord_qs =^ qs;
-        b =^ xord_qs;
+        xord_qs <=^ qs;
+        b <=^ xord_qs;
     end
 end
 

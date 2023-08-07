@@ -42,7 +42,7 @@ initial begin
 end
 
 always @(posedge clk) begin
-  cycles = cycles + 1'b1; // todo: ifdef for PERF
+  cycles <= cycles + 1'b1; // todo: ifdef for PERF
     if (reset) begin
       number <= 8'b0000_0000;
     end else begin
