@@ -20,4 +20,4 @@ async def test_ttrng(dut):
     for i in range(10):
         dut._log.info("checking returned value {}".format(i))
         await ClockCycles(dut.clk, 1000)
-        assert int(dut.number.value) == expected[0]
+        assert int(dut.number.value) == 170
