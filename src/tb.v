@@ -69,6 +69,7 @@ end
     #10ns $finish;
   end
 always #1 clk = ~clk;
+*/
 /*
   initial begin
     rst_n <= 0;
