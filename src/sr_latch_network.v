@@ -5,7 +5,7 @@ input wire rst_n;
 input wire enabled;
 output reg b; // our output bit.
 
-wire [7:0] qs = 8'b0000_0000;
+wire [7:0] qs; // = 8'b0000_0000;
 /* verilator lint_off UNUSEDSIGNAL */
 wire [7:0] dummy_qns = 8'b0000_0000; // TODO: these wires are unused, can we elide?
 reg xord_qs = 0;
