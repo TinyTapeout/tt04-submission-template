@@ -44,12 +44,10 @@ end
 always @(posedge clk) begin
   cycles = cycles + 1'b1; // todo: ifdef for PERF
     if (reset) begin
-      $display("trng: in reset, setting number to 0");
       number <= 8'b0000_0000;
     end else begin
       number <= {bit7, bit6, bit5, bit4, bit3, bit2, bit1, bit0};
     end
-    $display("trng cycles: %d", cycles);
 end
 
 endmodule

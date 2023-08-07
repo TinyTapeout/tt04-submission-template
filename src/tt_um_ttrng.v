@@ -40,12 +40,9 @@ module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
   end
 
   always @(posedge clk) begin
-    $display("top: posedge clk");
     if (reset) begin
-      $display("top in reset");
       bytes_out <= 8'b0000_0000;    
     end else begin
-      $display("top not in reset");
       bytes_out <= uo_out[7:0];
     end
   end

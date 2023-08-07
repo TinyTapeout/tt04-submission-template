@@ -39,22 +39,17 @@ always @(negedge clk) begin
 end
 
 always @(posedge clk) begin
-    $display("sr_latch_network: posedge clk");
-
     // when enabled happens, bring the latches out of reset.
     if (enabled) begin
-        $display("sr_latch_network: enabled has happened.");
         s <= clk;
         r <= clk;
     end
 
     reset = ~rst_n;
     if (reset) begin
-        $display("sr_latch_network in reset");
         b = 0;
     end else begin
         // reduce qs to a single bit with xor.
-        $display("sr_latch_network reducing qs, %b", qs);
         xord_qs =^ qs;
         b =^ xord_qs;
     end
