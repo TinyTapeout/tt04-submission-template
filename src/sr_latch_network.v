@@ -33,6 +33,11 @@ end
 
 reg reset;
 
+always @(negedge clk) begin
+    s <= clk;
+    r <= clk;
+end
+
 always @(posedge clk) begin
     $display("sr_latch_network: posedge clk");
 
