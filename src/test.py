@@ -2,7 +2,7 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles
 
-expected = [1]
+expected = [170]  # 10101010
 
 
 @cocotb.test()
