@@ -52,7 +52,9 @@ initial begin
   $display("output currently: %b", uo_out);
   clk = 1; #5; clk = 0; #5;
   $display("now what's in the output: %b", uo_out);
-	forever begin clk=1; #5 clk=0; #5; end
+	forever begin 
+    clk=1; #5; clk=0; #5;
+  end
 end
 
 initial begin
