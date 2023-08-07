@@ -1,3 +1,4 @@
+`default_nettype none
 `timescale 1ns/1ns
 /*
  * tt_um_ttrng.v
@@ -27,6 +28,9 @@ module tt_um_ttrng #( parameter MAX_COUNT = 10_000_000 ) (
   reg reset;
   always @(posedge clk) reset = ~rst_n;
   
+  assign uio_out = 8'b0;
+  assign uio_oe  = 8'b0;
+
   ttrng ttrng (
       .clk (clk),
       .rst_n (rst_n),

@@ -40,17 +40,17 @@ initial begin
   $display("going to start the test bench");
   rst_n = 1;
   $display("rst_n = 1");
-  ena = 0; #5;
-  clk = 0; #5;
+  ena = 0;
+  clk = 0;
   $display("Going to enable design.");
   // setting enabled freezes the design.
-  ena = 1; clk = 1; #5; 
+  ena = 1; clk = 1;
   $display("clk = 1");
-  clk = 0; #5;
+  clk = 0;
   $display("clk = 0");
   $display("drove the clock forward");
   $display("output currently: ", uo_out);
-  clk = 1; #5; clk = 0; #5;
+  clk = 1; clk = 0;
   $display("now what's in the output: ", uo_out);
 	/*forever begin 
     clk=1; #5; clk=0; #5;

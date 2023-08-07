@@ -16,6 +16,11 @@ lint:
 	iverilog -Wall $(VERILOG_SOURCES)
 	verilator --timing --lint-only tb.v
 
+# Matches what the GDS github task uses.
+lint_strict:
+	iverilog -Wall $(VERILOG_SOURCES)
+	verilator --lint-only -Wall tb.v
+
 waves: lint
 	iverilog -o tb.vvp $(VERILOG_SOURCES)
 	vvp -n -v tb.vvp
