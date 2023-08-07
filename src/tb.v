@@ -49,9 +49,9 @@ initial begin
   clk = 0; #5;
   $display("clk = 0");
   $display("drove the clock forward");
-  $display("output currently: %b", uo_out);
+  $display("output currently: ", uo_out);
   clk = 1; #5; clk = 0; #5;
-  $display("now what's in the output: %b", uo_out);
+  $display("now what's in the output: ", uo_out);
 	/*forever begin 
     clk=1; #5; clk=0; #5;
   end*/
