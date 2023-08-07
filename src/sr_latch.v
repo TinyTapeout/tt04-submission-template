@@ -6,10 +6,18 @@ module sr_latch(s, r, q, qn);
 
 // Converted from a nand-gate diagram of an SR latch.
 /* verilator lint_off UNOPTFLAT */
+wire Q_int, Qn_int;
+ 
+assign #1 Q_int = ~(s & Qn_int);
+assign #1 Qn_int = ~(r & Q_int);
+assign q = Q_int;
+assign qn = Qn_int;
+/*
 wire a, b;
 nand(a, s, b);
 nand(b, r, a);
 
 assign q = a;
 assign qn = b;
+*/
 endmodule
