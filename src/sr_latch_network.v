@@ -33,12 +33,13 @@ initial begin
 end
 
 reg reset;
-
+/*
+// TODO: can't drive s, r with multiple blocks. causes a MULTIDRIVEN error
 always @(negedge clk) begin
     s <= clk;
     r <= clk;
 end
-
+*/
 always @(posedge clk) begin
     // when enabled happens, bring the latches out of reset.
     if (enabled) begin

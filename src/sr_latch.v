@@ -5,6 +5,7 @@ module sr_latch(s, r, q, qn);
     output wire q, qn;
 
 // Converted from a nand-gate diagram of an SR latch.
+/* verilator lint_off UNOPTFLAT */
 wire a, b;
 nand(a, s, b);
 nand(b, r, a);
