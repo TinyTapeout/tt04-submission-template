@@ -8,6 +8,7 @@ project:
   source_files:
      - d_flip_flop.v
      - sr_latch.v
+     - sr_latch_network.v
      - tb.v
      - tt_um_ttrng.v
      - ttrng.v
