@@ -56,11 +56,11 @@ initial begin
     clk=1; #5; clk=0; #5;
   end*/
 end
-
+/*
 initial begin
     #1000; $finish;
 end
-
+*/
 /*
   initial begin
     $monitor($time, clk);
