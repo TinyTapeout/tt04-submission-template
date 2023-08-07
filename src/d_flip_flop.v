@@ -5,10 +5,6 @@ module d_flip_flop(d, clk, q, rst_n);
 
   reg reset;
 
-  initial begin
-    q = 1'b0;
-  end
-
   always @(posedge clk) begin
     reset <= ~rst_n;
         if (reset) begin
