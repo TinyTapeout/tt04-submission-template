@@ -1,0 +1,20 @@
+set_io --warn-no-port clk 21
+# top row
+set_io --warn-no-port PIO0_02 112
+set_io --warn-no-port PIO0_03 113
+set_io --warn-no-port PIO0_04 114
+set_io --warn-no-port PIO0_05 115
+set_io --warn-no-port PIO0_06 116
+set_io --warn-no-port PIO0_07 117
+set_io --warn-no-port PIO0_08 118
+set_io --warn-no-port PIO0_09 119
+
+# bottom row
+set_io --warn-no-port PIO1_03 62
+set_io --warn-no-port PIO1_04 61
+set_io --warn-no-port PIO1_05 60
+set_io --warn-no-port PIO1_06 56
+set_io --warn-no-port PIO1_07 48
+set_io --warn-no-port PIO1_08 47
+set_io --warn-no-port PIO1_09 45
+set_io --warn-no-port PIO1_10 44
