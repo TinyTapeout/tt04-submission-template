@@ -24,7 +24,7 @@ documentation:
   author:       "Hugo Jesús Navarro Hernández, David Mora Mendez, Nadia Fernanda Barradas Solis"      # Your name
   title:        "4 bit full adder"      # Project title
   language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "a code for a 4 bit adder"      # Short description of what your project does
+  description:  "a full adder of code binary with logic gates"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
