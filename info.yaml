@@ -28,11 +28,11 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      takes 2 numbers and adds them using binary code with logic gates
+      Takes 2 numbers and adds them using binary code with logic gates
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      selecting the different switches and switching them on and off to turn on the leds, each switch has an assigned value, such as 1, 2, 4, 8, 16
+      Selecting the different switches and switching them on and off to turn on the leds, each switch has an assigned value, such as 1, 2, 4, 8, 16
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
