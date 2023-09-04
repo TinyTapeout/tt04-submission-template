@@ -24,15 +24,15 @@ documentation:
   author:       "Hugo Jesús Navarro Hernández, David Mora Mendez, Nadia Fernanda Barradas Solis"      # Your name
   title:        "4 bit full adder"      # Project title
   language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "a full adder of code binary with logic gates"      # Short description of what your project does
+  description:  "A full adder of binary numbers with logic gates"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      Explain how your project works
+      takes 2 numbers and adds them using binary code with logic gates
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      Explain how to test your project
+      selecting the different switches and switching them on and off to turn on the leds, each switch has an assigned value, such as 1, 2, 4, 8, 16
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
