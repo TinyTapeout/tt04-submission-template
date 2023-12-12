@@ -28,7 +28,7 @@ waves: lint
 view:
 	open -a GtkWave.app tb.vcd
 
-test_tb: lint
+test_tb:
 	iverilog -o tb.vvp $(VERILOG_SOURCES) 
 	vvp -n -v tb.vvp
 

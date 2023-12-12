@@ -1,13 +1,16 @@
 `timescale 1ns/1ns
-module sr_latch_network(clk, enabled, b, rst_n);
+module sr_latch_network 
+    #(parameter NUM_LATCHES=256) 
+    (clk, enabled, b, rst_n);
 input wire clk;
 input wire rst_n;
 input wire enabled;
-output reg b; // our output bit.
+output reg b; // our output bit
+reg [64:0] wrote_output = 0; // perf counter
 
-wire [7:0] qs; // = 8'b0000_0000;
+wire [NUM_LATCHES-1:0] qs;
 /* verilator lint_off UNUSEDSIGNAL */
-wire [7:0] dummy_qns; // = 8'b0000_0000; // TODO: these wires are unused, can we elide?
+wire [NUM_LATCHES-1:0] dummy_qns;
 reg xord_qs;
 wire final_output;
 
@@ -16,36 +19,24 @@ wire final_output;
 reg s = 0;
 reg r = 1;
 
-// For NUM_LATCHES, return a single bit of all latch values xor'd together into a DFF.
-// the `always` block xors all the latches into the DFF the xor'ing happens in an always block.
-sr_latch latch0(.s(s), .r(r), .q(qs[0]), .qn(dummy_qns[0]));
-sr_latch latch1(.s(s), .r(r), .q(qs[1]), .qn(dummy_qns[1]));
-sr_latch latch2(.s(s), .r(r), .q(qs[2]), .qn(dummy_qns[2]));
-sr_latch latch3(.s(s), .r(r), .q(qs[3]), .qn(dummy_qns[3]));
-sr_latch latch4(.s(s), .r(r), .q(qs[4]), .qn(dummy_qns[4]));
-sr_latch latch5(.s(s), .r(r), .q(qs[5]), .qn(dummy_qns[5]));
-sr_latch latch6(.s(s), .r(r), .q(qs[6]), .qn(dummy_qns[6]));
-sr_latch latch7(.s(s), .r(r), .q(qs[7]), .qn(dummy_qns[7]));
-d_flip_flop dff(.d(xord_qs), .clk(clk), .rst_n(rst_n), .q(final_output));
+// For NUM_LATCHES, return a single bit of all latch values xor'd together into a buffer.
+wire [NUM_LATCHES-1:0] latches;
 
-initial begin
-    b = 0;
-end
+genvar i;
+generate
+	for (i = 0; i < NUM_LATCHES; i = i + 1) begin
+        sr_latch latch(.s(s), .r(r), .q(qs[i]), .qn(dummy_qns[i]));
+	end
+endgenerate
+
+// Is a buffer appropiate here? do I need a dff?
+buf buf0(final_output, xord_qs);
 
 reg reset;
-/*
-// TODO: can't drive s, r with multiple blocks. causes a MULTIDRIVEN error
-always @(negedge clk) begin
+
+always @(posedge clk, negedge clk) begin
     s <= clk;
     r <= clk;
-end
-*/
-always @(posedge clk) begin
-    // when enabled happens, bring the latches out of reset.
-    if (enabled) begin
-        s <= clk;
-        r <= clk;
-    end
 
     reset <= ~rst_n;
     if (reset) begin
@@ -53,7 +44,9 @@ always @(posedge clk) begin
     end else begin
         // reduce qs to a single bit with xor.
         xord_qs <=^ qs;
-        b <=^ xord_qs;
+        // buf0 holds the intermediate output in final_output
+        b <= final_output;
+        wrote_output <= wrote_output + 1;
     end
 end
 

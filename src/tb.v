@@ -30,7 +30,6 @@ tt_um_ttrng tt_um_ttrng (
   );
 
 initial begin
-
   // TODO
   // The latch network never comes out of s=0, r=0 caused by the initial clock pulse.
   // Ensure that our sr latches are initialized with s=0,r=1 for initial reset.
@@ -41,47 +40,10 @@ initial begin
   $dumpvars (0, tb);
   $display("going to start the test bench");
   rst_n = 1;
-  $display("rst_n = 1");
-  ena = 0;
-  clk = 0;
-  $display("Going to enable design.");
-  // setting enabled freezes the design.
-  ena = 1; clk = 1;
-  $display("clk = 1");
-  clk = 0;
-  $display("clk = 0");
-  $display("drove the clock forward");
-  $display("output currently: ", uo_out);
-  clk = 1; clk = 0;
+  ena = 1; // set enabled high
   $display("now what's in the output: ", uo_out);
-	/*forever begin 
-    clk=1; #5; clk=0; #5;
-  end*/
-end
-/*
-initial begin
-    #1000; $finish;
-end
-*/
-/*
-  initial begin
-    $monitor($time, clk);
-    #10ns $finish;
+  repeat (20) begin
+    clk=0; #10; clk=1; #10;
   end
-always #1 clk = ~clk;
-*/
-/*
-  initial begin
-    rst_n <= 0;
-    clk <= 0;
-    repeat (10) @(posedge clk); 
-    rst_n <= 1;
-    
-    repeat (25) @(posedge clk);
-    rst_n <= 1;
-    $finish;
-    $display("Test complete");
-  end
-*/
-
+end
 endmodule

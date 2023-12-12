@@ -24,34 +24,35 @@ module tt_um_ttrng (
   input  wire       clk,      // clock
   input  wire       rst_n     // reset_n - low to reset
 );
+/*
   reg [7:0] bytes_out;
   assign uio_out = bytes_out; // TODO: this line exists to satisfy the linter
   assign uio_oe = bytes_out; // TODO: this line exists to satisfy the linter
-
+  assign uo_out = bytes_out;
+*/
   reg reset;
+  reg foo;
+  always @(posedge clk) foo <= ~clk;
   always @(posedge clk) reset <= ~rst_n;
-  
+
+  // wire these up so they are not undriven.
   assign uio_out = 8'b0;
   assign uio_oe  = 8'b0;
 
   ttrng ttrng (
       .clk (clk),
       .rst_n (rst_n),
-      .number (uo_out[7:0]),
+      .number (uo_out),
       .enabled (ena)
   );
-  
-  initial begin
-    //bytes_out = 8'b0000_0000;
-    reset = 0;
-  end
-
+  /*
   always @(posedge clk) begin
+
     if (reset) begin
-      bytes_out <= 8'b0000_0000;    
+     // bytes_out <= 8'b0000_0010;  // using 2 decimal as a debugging marker.  
     end else begin
-      bytes_out <= uo_out[7:0];
+      //bytes_out <= uo_out[7:0];
     end
   end
-
+*/
 endmodule
